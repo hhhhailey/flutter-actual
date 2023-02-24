@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:actual/common/const/colors.dart';
 import 'package:actual/common/const/data.dart';
 import 'package:actual/common/layout/default_layout.dart';
@@ -22,11 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
-    // localhost
-    final emulatorIp = '10.0.2.2:3000';
-    final simulatorIp = '127.0.0.1:3000';
-
-    final ip = Platform.isIOS == true ? simulatorIp : emulatorIp;
 
     return DefaultLayout(
       child: SingleChildScrollView(
@@ -35,20 +29,20 @@ class _LoginScreenState extends State<LoginScreen> {
           top: true,
           bottom: false,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               children: [
-                _Title(),
+                const _Title(),
                 Image.asset(
                   'asset/img/misc/logo.png',
                   width: MediaQuery.of(context).size.width / 3 * 2,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 CustomTextFormField(
                   onChange: (String value) => username = value,
                   hintText: '이메일을 입력해주세요',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 CustomTextFormField(
@@ -56,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onChange: (String value) => password = value,
                   hintText: '비밀번호를 입력해주세요',
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       primary: PRIMARY_COLOR, minimumSize: Size.fromHeight(50)),
@@ -84,15 +78,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         .push(MaterialPageRoute(builder: (_) => RootTab()));
                     print(resp.data);
                   },
-                  child: Text('로그인'),
+                  child: const Text('로그인'),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextButton(
                     style: TextButton.styleFrom(
                         primary: PRIMARY_COLOR,
-                        minimumSize: Size.fromHeight(50)),
+                        minimumSize: const Size.fromHeight(50)),
                     onPressed: () {},
-                    child: Text('회원가입'))
+                    child: const Text('회원가입'))
               ],
             ),
           ),
